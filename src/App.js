@@ -16,7 +16,7 @@ class App extends React.Component{
                 <Header />
                 <Switch>
                     <Route  exact path='/' component={Home} />
-                    <Route  path='/Meals' component={Meals} />
+                    <Route  path='/Meals/:categoryName' component={Meals} />
                     <Route  path='/Details' component={Details} />
                     <Route  path='/Favoris' component={Favoris} />
                 </Switch>
