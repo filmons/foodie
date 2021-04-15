@@ -6,12 +6,17 @@ import Category from '../../components/Category'
 
 class Home extends React.Component {
 
+    // constructor(props){
+    //     super(props)
+    //     console.log(props)
+    // }
+
     render(){
 
         return (
             <section className="container">
                 <RandomMeal />
-                <Category />
+                <Category history={this.props.history}/>
                 
             </section>
         )
