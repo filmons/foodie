@@ -15,10 +15,15 @@ class Meals extends React.Component {
           .then(res => {
             const meals = res.data;
             this.setState({meals});
-            console.log(res.data)
           })  
           
     }
+
+    getMealById = (idMeal) => {
+        this.props.history.push('/Details/' + idMeal)
+
+    }
+
 
     render(){
         return (
@@ -28,10 +33,9 @@ class Meals extends React.Component {
                     {
                     (this.state.meals.length !== 0) ? (this.state.meals.meals.map((meal) => (
                     
-                        <figure key={meal.idMeal} >
+                        <figure key={meal.idMeal} onClick={(idMeal) => this.getMealById(meal.idMeal)} >
                             <img src={meal.strMealThumb} alt="" />
                             <figcaption>  <h2>{meal.strMeal}</h2> </figcaption>
-                            {/* <p>{category.strCategoryDescription}</p> */}
                         </figure>
                     )
                     )) : null

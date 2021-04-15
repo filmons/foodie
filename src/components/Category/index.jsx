@@ -38,7 +38,6 @@ class Category extends React.Component {
                         <figure key={category.idCategory} onClick={(categoryName) => this.mealsBycategory(category.strCategory)}>
                             <img src={category.strCategoryThumb} alt="" />
                             <figcaption>  <h2>{category.strCategory}</h2> </figcaption>
-                            {/* <p>{category.strCategoryDescription}</p> */}
                         </figure>
                     )
                     )) : null

@@ -17,7 +17,7 @@ class App extends React.Component{
                 <Switch>
                     <Route  exact path='/' component={Home} />
                     <Route  path='/Meals/:categoryName' component={Meals} />
-                    <Route  path='/Details' component={Details} />
+                    <Route  path='/Details/:idMeal' component={Details} />
                     <Route  path='/Favoris' component={Favoris} />
                 </Switch>
                 <Footer />
