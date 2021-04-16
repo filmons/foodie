@@ -6,7 +6,6 @@ import Category from '../../components/Category'
 
 class Home extends React.Component {
 
-
     render(){
 
         return (
