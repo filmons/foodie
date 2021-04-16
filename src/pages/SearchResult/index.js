@@ -10,10 +10,26 @@ class searchresult extends React.Component {
 
     async componentDidMount() {
         
+        console.log(this.props)
         const userInput = (this.props.match.params.str) ? this.props.match.params.str : ""
-        const res = await axios.get('https://www.themealdb.com/api/json/v1/1/filter.php?a=' + userInput)
+        const searchBy = (this.props.match.params.searchBy) ? this.props.match.params.searchBy : ""
+
+        let axiosUrl;
+
+        switch (searchBy) {
+            case "name" : axiosUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + userInput
+                    break
+            case "category" : axiosUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?c=" + userInput
+                    break
+            case "area" : axiosUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?a=" + userInput
+                    break
+            case "ingredients" : axiosUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?i=" + userInput
+                    break
+            default : axiosUrl = "https://www.themealdb.com/api/json/v1/1/filter.php?a=Frensh"
+        }
+
+        const res = await axios.get(axiosUrl)
         
-        console.log(res.data)
         const meals = (res.data.meals !== null) ? res.data : [];
         this.setState({meals});
           

@@ -22,6 +22,12 @@ header form input{
     font-size: 1.2rem;
 }
 
+header form select {
+    border-radius: 15px;
+    border: 1px solid #FFC300;
+    width: 17%;
+}
+
 header form button {
     margin-left: 10px;
     border-radius: 10px;

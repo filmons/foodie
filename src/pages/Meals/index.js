@@ -24,6 +24,7 @@ class Meals extends React.Component {
             const meals = res.data;
             this.setState({meals});
         }
+        
         //const url = 'www.themealdb.com/api/json/v1/1/filter.php?c=' + category
         // axios.get('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category)
         //   .then(res => {
