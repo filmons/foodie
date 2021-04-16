@@ -27,7 +27,7 @@ class RandomMeal extends React.Component {
             <section className="random-meal">
                 <h1>Recette du jour</h1>
                 <figure>
-                    <img src={imgUrl} width="100%" alt="image recette" />
+                    <img src={imgUrl} width="100%" alt={title} />
                     <figcaption>  <h2>{title}</h2> </figcaption>
                 </figure>
             </section>

@@ -5,6 +5,7 @@ import Details from './pages/Details'
 import Favoris from './pages/Favoris'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import SearchResult from './pages/SearchResult'
 import './App.css'
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
@@ -17,8 +18,10 @@ class App extends React.Component{
                 <Switch>
                     <Route  exact path='/' component={Home} />
                     <Route  path='/Meals/:categoryName' component={Meals} />
-                    <Route  path='/Details' component={Details} />
+                    <Route  path='/mealsByFirstLetter/:firstLetter' component={Meals} />
+                    <Route  path='/Details/:idMeal' component={Details} />
                     <Route  path='/Favoris' component={Favoris} />
+                    <Route  path='/search/:str/:searchBy' component={SearchResult} />
                 </Switch>
                 <Footer />
             </Router>

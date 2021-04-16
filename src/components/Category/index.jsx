@@ -22,12 +22,10 @@ class Category extends React.Component {
     mealsBycategory = (categoryName) => {
 
         this.props.history.push('/meals/' + categoryName)
-
     }
 
     render() {
         
-        let categoryUrl
         return (
             <section className="category">
                 <h1>Categories</h1>
@@ -40,7 +38,6 @@ class Category extends React.Component {
 
                             <img src={category.strCategoryThumb} alt="" />
                             <figcaption>  <h2>{category.strCategory}</h2> </figcaption>
-                            {/* <p>{category.strCategoryDescription}</p> */}
                         </figure>
                     )
                     )) : null

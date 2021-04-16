@@ -1,24 +1,60 @@
 import React from 'react'
 import './detail.css'
+import axios from 'axios';
+import formatUrlYoutube from '../../utils/formatUrl'
 
 
 class Details extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            details:[]
+        }
+    }
+
+    componentDidMount (){
+        
+        const mealId = this.props.match.params.idMeal
+        axios.get('https://www.themealdb.com/api/json/v1/1/lookup.php?i=' + mealId)
+          .then(res => {
+            const details = res.data;
+            this.setState({details});
+            
+          })  
+    }
+
+
     render(){
+
+        const mealName = (this.state.details.length !== 0) ? this.state.details.meals[0].strMeal : null
+        const mealVideo = (this.state.details.length !== 0) ? this.state.details.meals[0].strYoutube : null
+        const mealImg = (this.state.details.length !== 0) ? this.state.details.meals[0].strMealThumb : null
+        const mealDesc = (this.state.details.length !== 0) ? this.state.details.meals[0].strInstructions : null
+        const mealArea = (this.state.details.length !== 0) ? this.state.details.meals[0].strArea : null
+        const mealCategory = (this.state.details.length !== 0) ? this.state.details.meals[0].strCategory : null
+        const mealTag = (this.state.details.length !== 0) ? this.state.details.meals[0].strTags : null
+
+        const url = (mealVideo) ? formatUrlYoutube(mealVideo) : null
+       
         return (
-            <section class="detail-container">
-                <section class="video-container">
-                    <h1>Gâtaux et yaourt et Nottela </h1>
-                    <video controls width="400">
-                        <source src="/media/cc0-videos/flower.webm" type="video/webm" />
-                        <source src="/media/cc0-videos/flower.mp4" type="video/mp4" />
-                    </video>
+            <section className="detail-container">
+                <section className="video-container">
+                    <h1>{mealName}</h1>
+
+                    <iframe title={mealName} width="70%" height="400" src={url} frameBorder="0" allowFullScreen></iframe>
+                    
                 </section>
-                <div class="img-container">
-                    <img src="https://cdn.discordapp.com/attachments/831156100106682378/831172196834476062/foodie-sm.jpg" alt="foodie image" />
+                <div className="img-container">
+                    <img src={mealImg} alt={mealName} />
                 </div>
-                <div class="description">
-                    <h3>truc</h3>
-                    <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Error, ad deserunt. Eos ipsum vel, excepturi nulla, quaerat dignissimos veritatis unde facere, perspiciatis minima dolorum voluptate iure aspernatur optio. Maiores nulla atque ullam hic necessitatibus ipsa. Et id maiores eos dolorem excepturi officia quaerat, rem vel dolores, voluptatum distinctio harum assumenda fugiat. Adipisci, itaque ab beatae vero eligendi praesentium earum? Necessitatibus dolorum pariatur quo placeat aut ratione eligendi voluptates, ducimus repellendus odio quasi assumenda consectetur maxime ullam laborum quod cumque quia at inventore vitae unde tempore deserunt eaque nemo. Facilis voluptate maiores, eveniet impedit adipisci vero veritatis tenetur tempora doloremque aliquid nobis vel ex eaque dolorum numquam aliquam suscipit architecto temporibus consequuntur sint. Eius fugit necessitatibus accusamus, vitae iure quae dolorem. Necessitatibus hic magnam neque officiis est amet nemo accusantium inventore dolor omnis! Eius incidunt facilis inventore perferendis voluptas sequi exercitationem nobis qui dolorem est, dignissimos obcaecati, magni suscipit necessitatibus repellendus.</p>
+                <div className="description">
+                    <h3>Category: {mealCategory}</h3>
+                    <h3>Area : {mealArea}</h3>
+                    <h3>Description : </h3>
+                    <p>{mealDesc}</p>
+                    <h3>Tag : {mealTag}</h3>
+                    <h3>Ingredients : </h3>
+                    
                 </div>
             </section>
 

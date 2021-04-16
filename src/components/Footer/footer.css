@@ -38,11 +38,13 @@ footer{
     border-radius: 50%;
     width: 15px;
     height: 15px;
-    text-align: center;
+    text-align: center; 
     padding: 20px;
     font-size: 1rem;
+    cursor: pointer;
  }
  .meal-alphabet ul li a{
+     
      text-decoration: none;
      color: #3F3E3E;
  }
