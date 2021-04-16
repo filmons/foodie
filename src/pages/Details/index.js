@@ -1,6 +1,7 @@
 import React from 'react'
 import './detail.css'
 import axios from 'axios';
+import formatUrlYoutube from '../../utils/formatUrl'
 
 
 class Details extends React.Component {
@@ -33,18 +34,18 @@ class Details extends React.Component {
         const mealCategory = (this.state.details.length !== 0) ? this.state.details.meals[0].strCategory : null
         const mealTag = (this.state.details.length !== 0) ? this.state.details.meals[0].strTags : null
 
+        const url = (mealVideo) ? formatUrlYoutube(mealVideo) : null
        
         return (
             <section className="detail-container">
                 <section className="video-container">
                     <h1>{mealName}</h1>
-                    <video controls width="400">
-                        <source src={mealVideo} type="video/webm" />
-                        <source src={mealVideo} type="video/mp4" />
-                    </video>
+
+                    <iframe title={mealName} width="70%" height="400" src={url} frameBorder="0" allowFullScreen></iframe>
+                    
                 </section>
                 <div className="img-container">
-                    <img src={mealImg} alt="foodie image" />
+                    <img src={mealImg} alt={mealName} />
                 </div>
                 <div className="description">
                     <h3>Category: {mealCategory}</h3>
@@ -52,6 +53,8 @@ class Details extends React.Component {
                     <h3>Description : </h3>
                     <p>{mealDesc}</p>
                     <h3>Tag : {mealTag}</h3>
+                    <h3>Ingredients : </h3>
+                    
                 </div>
             </section>
 

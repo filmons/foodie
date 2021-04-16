@@ -11,6 +11,7 @@
 .random-meal figure {
     border: 1px solid #FFC300;
     border-radius: 10px;
+    cursor: pointer;
 }
 .random-meal figure img {
     border: 1px solid #FFC300;
@@ -34,6 +35,7 @@
     border: 1px solid #FFC300;
     border-radius: 10px;
     margin-bottom: 30px;
+    cursor: pointer;
 }
 .meal-cat figure img {
     width: 100%;

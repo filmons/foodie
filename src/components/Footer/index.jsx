@@ -1,47 +1,40 @@
 import React from 'react'
+import {withRouter} from 'react-router-dom'
 import './footer.css'
+import instagram from './instagram.svg'
+import Facebook from './Facebook.svg'
+import snapchat from './snapchat.svg'
+import twitter from './twitter.svg'
 
-export default class Footer extends React.Component {
+class Footer extends React.Component {
+
+    
+    mealsByFirstLetter = (firstLetter) => {
+        
+        this.props.history.push('/mealsByFirstLetter/' + firstLetter.lettre)
+        
+    }
+
     render(){
+        
+        const alphabet =['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'G', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
         return (
             <footer>
                 <div className="sociaux">
-                    <img src="Facebook.svg" alt="facebook" />
-                    <img src="./instagram.svg" alt="instagram" />
-                    <img src="./twitter.svg" alt="twitter" />
-                    <img src="logosnapchat.svg" alt="snapshat" />
+                    <img src={Facebook} alt="facebook" />
+                    <img src={instagram} alt="instagram" />
+                    <img src={twitter} alt="twitter" />
+                    <img src={snapchat} alt="snapshat" />
                 </div>
                 <div className="meal-alphabet">
                     <ul>
-                    <li><a href="">A</a></li>
-                    <li><a href="">B</a></li>
-                    <li><a href="">C</a></li>
-                    <li><a href="">D</a></li>
-                    <li><a href="">E</a></li>
-                    <li><a href="">F</a></li>
-                    <li><a href="">G</a></li>
-                    <li><a href="">H</a></li>
-                    <li><a href="">I</a></li>
-                    <li><a href="">J</a></li>
-                    <li><a href="">K</a></li>
-                    <li><a href="">L</a></li>
-                    <li><a href="">M</a></li>
-                    <li><a href="">N</a></li>
-                    <li><a href="">O</a></li>
-                    <li><a href="">P</a></li>
-                    <li><a href="">Q</a></li>
-                    <li><a href="">R</a></li>
-                    <li><a href="">S</a></li>
-                    <li><a href="">T</a></li>
-                    <li><a href="">U</a></li>
-                    <li><a href="">V</a></li>
-                    <li><a href="">W</a></li>
-                    <li><a href="">X</a></li>
-                    <li><a href="">Y</a></li>
-                    <li><a href="">Z</a></li>
+                    {alphabet.map((lettre, i) => <li key={i} onClick={() => this.mealsByFirstLetter({lettre})}>{lettre}</li>)}
+                    
                     </ul>
                 </div>
             </footer>
         )
     }
 }
+
+export default withRouter(Footer)

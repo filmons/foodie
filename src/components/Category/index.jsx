@@ -22,12 +22,10 @@ class Category extends React.Component {
     mealsBycategory = (categoryName) => {
 
         this.props.history.push('/meals/' + categoryName)
-
     }
 
     render() {
         
-        let categoryUrl
         return (
             <section className="category">
                 <h1>Categories</h1>

@@ -8,14 +8,29 @@ class Meals extends React.Component {
     }
 
 
-    componentDidMount() {
-        const category = this.props.match.params.categoryName
-        //const url = 'www.themealdb.com/api/json/v1/1/filter.php?c=' + category
-        axios.get('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category)
-          .then(res => {
+    async componentDidMount() {
+        console.log(this.props.location.pathname.split('/')[1])
+        const category = (this.props.location.pathname.split('/')[1] === "meals") ? this.props.location.pathname.split('/')[2] : null
+        const firstLetter = (this.props.location.pathname.split('/')[1] === "mealsByFirstLetter") ? this.props.location.pathname.split('/')[2] : null
+
+        if(category) {
+            const res = await axios.get('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category)
             const meals = res.data;
             this.setState({meals});
-          })  
+        }
+        if(firstLetter){
+            
+            const res = await axios.get('https://www.themealdb.com/api/json/v1/1/search.php?f=' + firstLetter)
+            const meals = res.data;
+            this.setState({meals});
+        }
+        //const url = 'www.themealdb.com/api/json/v1/1/filter.php?c=' + category
+        // axios.get('https://www.themealdb.com/api/json/v1/1/filter.php?c=' + category)
+        //   .then(res => {
+        //     const meals = res.data;
+        //     this.setState({meals});
+        //     console.log(res.data)
+        //   })  
           
     }
 
