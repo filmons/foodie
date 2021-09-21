@@ -15,14 +15,17 @@ class RandomMeal extends React.Component {
            
           })  
     }
-
+    getMealById = (idMeal) => {
+        this.props.history.push('/Details/' + idMeal)
+    }
+        
     render(){
 
-        let title
-        let imgUrl
-        (this.state.meal.length === 0) ? title = "" : title = this.state.meal.meals[0].strMeal;
-        (this.state.meal.length === 0) ? imgUrl = "" : imgUrl = this.state.meal.meals[0].strMealThumb
-        
+        let title = (this.state.meal.length === 0) ? "" :  this.state.meal.meals[0].strMeal;
+        let imgUrl = (this.state.meal.length === 0) ?  "" : this.state.meal.meals[0].strMealThumb
+        let idMeal = (this.state.meal.length === 0) ? "" : this.state.meal.meals[0].idMeal
+
+
         return(
             <section className="random-meal">
                 <h1>Recette du jour</h1>
