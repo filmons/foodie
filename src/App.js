@@ -7,6 +7,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import SearchResult from './pages/SearchResult'
 import './App.css'
+import CookieConsent from 'react-cookie-consent'
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
@@ -23,6 +24,7 @@ class App extends React.Component{
                     <Route  path='/Favoris' component={Favoris} />
                     <Route  path='/search/:str/:searchBy' component={SearchResult} />
                 </Switch>
+                <CookieConsent debug={true}>thi is coooki</CookieConsent>
                 <Footer />
             </Router>
         )
